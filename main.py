@@ -10,7 +10,7 @@ def root():
     return render_template('index.html')
 
 
-@app.get("/tables")
+@app.get("/api/tables")
 def tables():
     db = request.headers.get("db")
     if not db:
