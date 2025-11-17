@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/static/js/tailwind.js"></script>
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <title>DBExplorer</title>
-  </head>
-  <body>
-    <div id="db-form">
-      <label for="db" class="tetx-green-500">Имя базы данных</label>
-      <input type="text" name="db" id="db-input" />
-      <button id="get-tables-btn">ТАБЛИЦЫ, please</button>
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="/static/js/tailwind.js"></script>
+        <link rel="stylesheet" href="/static/css/style.css" />
+        <title>DBExplorer</title>
+    </head>
+    <body>
+        <div id="statusline" class="text-red-500"></div>
+        <div id="db-form" class="panel">
+            <div class="head">
+                <label for="db" class="text-green-500">Имя базы данных</label>
+                <input type="text" name="db" id="db-input" />
+                <button id="get-tables-btn">Получить список таблиц</button>
+            </div>
+            <div id="tables" class="panel">
+                <div class="head">
+                    <button id="tables-close-button">Скрыть</button>
+                    <div id="tables-tabs"></div>
+                </div>
+                <div id="table-info"></div>
+            </div>
+        </div>
 
-    <script src="/static/js/script.js"></script>
-  </body>
+        <script src="/static/js/script.js"></script>
+    </body>
 </html>
