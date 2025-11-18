@@ -3,7 +3,7 @@
 :root {
     --bradius: 10px;
     --bwidth: 2px;
-    
+
     --bgc0: #171a1f;
     --bgc1: #22262e;
     --bgc1t: #22262e88;
@@ -97,7 +97,7 @@ select {
     border: var(--bwidth) solid var(--brc);
     transition: 0.25s all ease-in;
     padding: 5px 3px !important;
-    
+
     &:hover {
         transform: translateY(-1px) scale(1.01);
     }
@@ -118,4 +118,43 @@ option {
     &:hover {
         background-color: var(--bgc3);
     }
+}
+.sql-data-table {
+    overflow: auto;
+    max-height: 70vh;
+    max-width: 90%;
+    display: block;
+}
+.sql-data-table-header-row {
+}
+.header-cell {
+}
+
+.sql-data-table-row:nth-child(even) {
+    background-color: var(--bgc2);
+}
+.sql-data-table-row {
+    transition: all 0.3s ease;
+}
+.sql-data-table-row:hover {
+    background-color: var(--bgc4) !important;
+}
+.sql-data-table-row:hover > .sql-data-table-cell:nth-child(even) {
+    background-color: var(--bgc4) !important;
+}
+.sql-data-table-cell {
+    padding: 2px 4px !important;
+    transition: all 0.3s ease;
+    border: var(--bwidth) solid var(--brc);
+    /* border-radius: var(--bradius); */
+    &:hover {
+        background-color: var(--bgc4) !important;
+        color: var(--brca);
+    }
+}
+.sql-data-table-cell:nth-child(even) {
+    background-color: var(--bgc2);
+}
+.sql-data-table-row:nth-child(even) > .sql-data-table-cell:nth-child(even) {
+    background-color: var(--bgc3);
 }

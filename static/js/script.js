@@ -58,7 +58,6 @@ function fetch_databases() {
     fetch("/api/databases", { method: "GET" })
         .then((response) => response.json())
         .then((data) => {
-            // удаляем все option, кроме refresh
             Array.from(db_dropdown.options).forEach((opt) => {
                 if (opt.id !== "db-dropdown-refresh-option") {
                     db_dropdown.removeChild(opt);
@@ -100,18 +99,23 @@ async function fetch_json_async(endpoint, method, headers, body) {
 
 function make_table(columns, rows) {
     let table = document.createElement("table");
+    table.className = "sql-data-table";
     let hrow = document.createElement("tr");
+    hrow.className = "sql-data-table-header-row";
     table.appendChild(hrow);
     columns.forEach((col) => {
         let cell = document.createElement("th");
+        cell.className = "header-cell sql-data-table-cell";
         cell.innerText = col;
         hrow.appendChild(cell);
     });
     rows.forEach((row) => {
         let row_element = document.createElement("tr");
+        row_element.className = "sql-data-table-row";
         table.appendChild(row_element);
         columns.forEach((key) => {
             let cell = document.createElement("td");
+            cell.className = "sql-data-table-cell";
             cell.innerText = row[key];
             row_element.appendChild(cell);
         });
