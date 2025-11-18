@@ -3,11 +3,13 @@
 :root {
     --bradius: 10px;
     --bwidth: 2px;
-    --bgc0: #020617;
-    --bgc1: #0f172a;
-    --bgc2: #1e293b;
-    --bgc3: #334155;
-    --bgc4: #475569;
+    
+    --bgc0: #171a1f;
+    --bgc1: #22262e;
+    --bgc1t: #22262e88;
+    --bgc2: #2d323c;
+    --bgc3: #383f4b;
+    --bgc4: #424b5a;
     --brc: #a1a1aa;
     --brca: #3b82f6;
     --brcad: #2563eb;
@@ -54,6 +56,8 @@ button {
 
     &:hover {
         transform: translateY(-1px) scale(1.01);
+        box-shadow: 0 4 8px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 4 8px rgba(0, 0, 0, 0.2);
     }
     &:active {
         color: var(--txtc-1);
@@ -71,7 +75,7 @@ button {
 
 .panel {
     border-radius: var(--bradius);
-    background-color: rgba(15, 23, 42, 0.7);
+    background-color: var(--bgc1t);
     backdrop-filter: blur(10px);
     border: var(--bwidth) solid rgba(161, 161, 170, 0.5);
     padding: 3px;
