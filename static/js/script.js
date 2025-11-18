@@ -36,6 +36,11 @@ tablesbtn.addEventListener("click", () => {
     })
         .then((response) => response.json())
         .then((data) => {
+            // console.log(data)
+            // if (response.status === 400 || response.status == 404) {
+            //     notify_error("БД не найдена")
+            //     return
+            // }
             if (data && data.tables) {
                 tables = data.tables;
                 generate_tables_header();
@@ -44,4 +49,37 @@ tablesbtn.addEventListener("click", () => {
             }
         })
         .catch((error) => console.error("Error:", error));
+});
+
+let db_dropdown = document.getElementById("db-dropdown");
+//TODO: refresh wen click refresh option even if refresh option now
+function fetch_databases() {
+    fetch("/api/databases", {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            // console.log(data);
+            db_dropdown.childNodes.forEach((x) => {
+                if (x.id !== "db-dropdown-refresh-option") {
+                    db_dropdown.removeChild(x);
+                }
+            });
+            data.forEach((x) => {
+                let option = document.createElement("option");
+                option.value = x;
+                option.innerText = x;
+                db_dropdown.appendChild(option);
+                console.log(x);
+            });
+        });
+}
+fetch_databases();
+db_dropdown.addEventListener("change", (event) => {
+    const selectedOption = event.target.value;
+    if (selectedOption == "$get") {
+        fetch_databases();
+    } else {
+        db_field.value = selectedOption;
+    }
 });

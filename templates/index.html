@@ -8,16 +8,23 @@
         <title>DBExplorer</title>
     </head>
     <body>
-        <div id="statusline" class="text-red-500"></div>
+        <div id="statusline" class="text-red-500" style="text-align: center">Выберите базу данных...</div>
         <div id="db-form" class="panel">
             <div class="head">
-                <label for="db" class="text-green-500">Имя базы данных</label>
-                <input type="text" name="db" id="db-input" />
-                <button id="get-tables-btn">Получить список таблиц</button>
+                <section id="db-selection-section">
+                    <!-- <label for="db" class="text-green-500">Имя базы данных</label> -->
+                    <input type="text" name="db" id="db-input" placeholder="Имя или путь к БД" style="min-width: 40vw" />
+                    <!-- <p style="display: inline;">или выберите из списка...</p> -->
+                    <select id="db-dropdown">
+                        <option value="$get" id="db-dropdown-refresh-option">Быстрый выбор базы / обновить список</option>
+                    </select>
+                </section>
             </div>
             <div id="tables" class="panel">
                 <div class="head">
-                    <button id="tables-close-button">Скрыть</button>
+                    <!-- <button id="tables-close-button">Скрыть</button> -->
+                    <button id="get-tables-btn">Получить/обновить список таблиц</button>
+                    <div id="table-list-cntrols"></div>
                     <div id="tables-tabs"></div>
                 </div>
                 <div id="table-info"></div>

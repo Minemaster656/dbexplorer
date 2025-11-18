@@ -91,3 +91,31 @@ button {
 .active-tab {
     background-color: var(--bgc2) !important;
 }
+select {
+    border-radius: var(--bradius);
+    background-color: var(--bgc2);
+    border: var(--bwidth) solid var(--brc);
+    transition: 0.25s all ease-in;
+    padding: 5px 3px !important;
+    
+    &:hover {
+        transform: translateY(-1px) scale(1.01);
+    }
+    &:focus {
+        color: var(--txtc-1);
+        outline: none;
+        border-color: var(--brca);
+        background-color: var(--bgc3);
+        box-shadow: 0 0 8px var(--brca);
+        transform: translateY(-2px) scale(1.025) !important;
+        opacity: 0.5;
+    }
+}
+
+option {
+    background-color: var(--bgc2);
+    color: var(--txtc-1);
+    &:hover {
+        background-color: var(--bgc3);
+    }
+}

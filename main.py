@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, Response
 from sqlite3 import connect
 from json import dumps, loads
+import sys
+import os
 
 app = Flask(__name__)
 
@@ -14,7 +16,9 @@ def root():
 def tables():
     db = request.headers.get("db")
     if not db:
-        return Response(status=400)
+        return Response('{"error":"Укажите базу данных!"}', status=400)
+    if not os.path.exists(db):
+        return Response('{"error":"База данных не найдена"}', status=404)
     try:
         conn = connect(db)
         curs = conn.cursor()
@@ -29,6 +33,9 @@ def tables():
             pass
         return Response(dumps({"error": str(e)}), status=500)
 
-
+@app.get("/api/databases")
+def databases():
+    return Response(dumps(["db/" + x for x in os.listdir("db")], ensure_ascii=False), status=200)
+    
 if __name__ == '__main__':
     app.run(port=8000, host="0.0.0.0", debug=True)
