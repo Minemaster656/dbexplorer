@@ -36,7 +36,13 @@ def tables():
 
 @app.get("/api/databases")
 def databases():
-    return Response(dumps(["db/" + x for x in os.listdir("db")], ensure_ascii=False), status=200)
+    files = os.listdir("db")
+    resp = []
+    for f in files:
+        if f.endswith(".db"):
+            resp.append("db/"+f)
+    print(resp)
+    return Response(dumps(resp, ensure_ascii=False), status=200)
 
 
 @app.get("/api/tables/sample")
@@ -72,9 +78,10 @@ def sample_table():
                 else:
                     row_dict[columns[i]] = value
             data.append(row_dict)
-
+        returned_data = dumps({"columns": columns, "data": data})
+        # print(returned_data)
         # column_info = {columns[i]: column_types[i] for i in range(len(columns))}
-        return Response(dumps({"columns": columns, "data": data}), status=200)
+        return Response(returned_data, status=200)
     except Exception as e:
         if conn:
             conn.close()
