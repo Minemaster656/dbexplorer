@@ -53,6 +53,7 @@ button {
     /* border-top-color: var(--brcad); */
     padding: 3px !important;
     box-sizing: content-box;
+    user-select: text;
 
     &:hover {
         transform: translateY(-1px) scale(1.01);
@@ -121,9 +122,10 @@ option {
 }
 .sql-data-table {
     overflow: auto;
-    max-height: 70vh;
-    max-width: 90%;
+    height: 70vh;
+    width: 90%;
     display: block;
+    resize: both;
 }
 .sql-data-table-header-row {
 }
@@ -157,4 +159,9 @@ option {
 }
 .sql-data-table-row:nth-child(even) > .sql-data-table-cell:nth-child(even) {
     background-color: var(--bgc3);
+}
+
+#query {
+    resize: both;
+    min-width: 50vw;
 }
